@@ -1,0 +1,20 @@
+replicaCount: 1
+
+mysql:
+  databaseName: ytlecture
+
+springApp:
+  image:
+    repository: kube-demo
+    pullPolicy: IfNotPresent
+    tag: latest
+
+mysqlVolume:
+  persistentVolumeClaim:
+    storageSize: 500Mi  #1Gi
+
+  persistentVolume:
+    storageSize: 500Mi  #1Gi
+    pathOnHost: /var/lib/mysql
+
+  mountPath: /var/lib/mysql
